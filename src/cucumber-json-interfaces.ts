@@ -41,7 +41,7 @@ export interface Scenario {
   sourceLine: string;
   status: StepStatus;
   steps: Step[];
-  tags: Tag[];
+  tags: string[];
   type: string;
   uri: string;
 }

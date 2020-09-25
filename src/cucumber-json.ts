@@ -186,7 +186,8 @@ export class CucumberJsonReport implements CucumberJsonReportInterface {
     this._userAgents.forEach((userAgent) => {
       const scenarioId = this.getScenarioIdFrom(name);
       const step = this.createDefaultStep(name, testRunInfo, userAgent);
-      const scenarioTags = tagsFromDescription(name).map((tag) => tag.name);
+      //const scenarioTags = tagsFromDescription(name).map((tag) => tag.name);
+      const scenarioTags = this.currentScenario![userAgent].tags.map((tag) => tag.name);
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const featureTags = this.currentFeature![userAgent].tags.map((tag) => tag.name);
 
@@ -209,7 +210,7 @@ export class CucumberJsonReport implements CucumberJsonReportInterface {
         sourceLine: 'undefined',
         status: step.result.status,
         steps: [step],
-        tags: [],
+        tags: scenarioTags,
         type: 'scenario',
         uri: '',
       };
